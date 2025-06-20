@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeevan Dhara</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Jeevan Dhara</h1>
+
+        <!-- Dropdown for Medicine Selection -->
+        <label for="medicine-select">Select Medicine:</label>
+        <select id="medicine-select">
+            <option value="" disabled selected>Select a medicine</option>
+            <!-- Medicine options will be dynamically added here -->
+        </select>
+        <button class="btn-dark-green" onclick="addMedicine()">Add to Cart</button>
+
+        <!-- Cart Table -->
+        <table id="cart-table">
+            <thead>
+                <tr>
+                    <th>Medicine Name</th>
+                    <th>Price (₹)</th>
+                    <th>Quantity</th>
+                    <th>Total (₹)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <!-- Total Bill -->
+        <div id="total-bill">
+            Total: ₹<span id="total-amount">0</span>
+        </div>
+
+        <!-- Payment Options -->
+        <h2>Payment Options</h2>
+        <label><input type="radio" name="payment-method" value="cash" checked onchange="hidePaymentDetails()"> Cash</label>
+        <label><input type="radio" name="payment-method" value="card" onchange="showCardDetails()"> Card</label>
+        <label><input type="radio" name="payment-method" value="online" onchange="showOnlinePayment()"> Online Payment</label>
+
+        <!-- Card Details Form -->
+        <div id="card-details" style="display: none;">
+            <h3>Enter Card Details</h3>
+            <label for="card-number">Card Number:</label>
+            <input type="text" id="card-number"><br>
+            <label for="expiry-date">Expiry Date:</label>
+            <input type="month" id="expiry-date"><br>
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv"><br>
+        </div>
+
+        <!-- QR Code Section for Online Payment -->
+        <div id="qr-code-section" style="display: none;">
+            <h3>Scan QR Code for Online Payment</h3>
+            <img src="./qr_img.png" alt="QR Code">
+            <p><strong>OR</strong></p>
+            <p>UPI ID <input type="text" name="" id=""></p>
+        </div>
+
+        <!-- Generate Invoice Button -->
+        <button class="btn-dark-green" onclick="generateInvoice()">Generate Invoice</button>
+
+        <!-- Invoice Display -->
+        <div id="invoice"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
